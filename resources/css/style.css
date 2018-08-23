@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Lobster Two', cursive;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.Lobster-Two{
+  font-family: 'Lobster Two', cursive;
+}
+
+.Lobster-Two-700{
+  font-family: 'Lobster Two', cursive;
+  font-weight: 700;
+}
+
+.Yantram{
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.Yantram-500{
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 500;
+}
+
+.Yantram-700{
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 700;
+}
+
+.Yantram-900{
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 900;
+}
+.dropdown{
+  margin-top: -4rem !important;
+}
+
+.dropdown-toggle{
+  border-radius: 50px !important;
+  cursor: pointer;
+}
+
+.dropdown-menu{
+  /*min-width: 15rem !important;*/
+  transform: translate3d(0px, 44px, 0px) !important;
+}
+
+.btn-primary{
+  background-color: #FFCC00 !important;
+  border: hidden !important;
+  border-radius: 0 !important;
+  color: black;
+  cursor: pointer;
+}
+
+#itemForSale:hover{
+  background-color: #EEEEEE !important;
+  -webkit-transform: scale(1.025);
+  -moz-transform: scale(1.025);
+  -ms-transform: scale(1.025);
+  -o-transform: scale(1.025);
+  transform: scale(1.025);
+  transition: all 1s;
+  cursor: pointer;
+}
