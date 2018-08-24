@@ -15,6 +15,9 @@ function loadEventListener() {
 
   clearCart.click(clearWholeCart);
 
+  //Document ready for cart
+  document.addEventListener('DOMContentLoaded', getFromLocalStorage);
+
 }
 
 $(document).on('click', '.container .dropdown-menu', function (e) {
@@ -54,18 +57,6 @@ function getProductInformation(someProduct) {
 }
 
 function addToCart(productObject) {
-  // const $cart = `<div class="row mt-2" data-id="${productObject.id}">
-  //                <div class="col-5 offset-1">
-  //                 <img id="cart-Img" class="img-fluid rounded" src="${productObject.image}" width="100" alt="">
-  //                </div>
-  //                <div class="col-5 text-center Lobster-Two-700" style="font-size: 1.15rem">
-  //                 ${productObject.title}
-  //                 <div class="row text-center mx-auto">
-  //                   <button class="btn btn-light btn-block">
-  //                     <img src="./resources/img/delete.svg" width="20" alt="">
-  //                   </button>
-  //                 </div>
-  //                </div></div> `;
 
   const $cart =
     `
@@ -82,6 +73,32 @@ function addToCart(productObject) {
 
   $cartItem.append($cart);
 
+  //Add to local storage
+  saveIntoLocalStorage(productObject);
+
+}
+
+function saveIntoLocalStorage(pObject) {
+  let products = getProductsFromLocalStorage();
+
+  // Add product into array
+  products.push(pObject);
+
+  //Convert into JSON for local storage
+  localStorage.setItem('products', JSON.stringify(products));
+
+}
+
+function getProductsFromLocalStorage(){
+  let products;
+
+  //Check to see if anything exists in the storage
+  if(localStorage.getItem('products') === null){
+    products = [];
+  } else {
+    products = JSON.parse(localStorage.getItem('products'));
+  }
+  return products
 }
 
 function removeProduct(e) {
@@ -98,4 +115,35 @@ function removeProduct(e) {
 // Clears shopping cart
 function clearWholeCart() {
   $cartItem.empty();
+
+  //Clear from local storage
+  clearFromLocalStorage();
+
+}
+
+function clearFromLocalStorage() {
+  localStorage.clear();
+}
+
+function getFromLocalStorage() {
+  //Loads products into shopping cart
+  let productsLS = getProductsFromLocalStorage();
+
+  //Loop through each one to print into DOM -> Shopping Cart
+  productsLS.forEach(function (prodLS) {
+    const $cart =
+      `
+    <div class="col-8 offset-2 flex-row-reverse text-center p-3" data-id="${prodLS.id}">
+    <img id="cart-Img" class="img-fluid rounded mb-2" src="${prodLS.image}" width="100" alt="">
+    <h4 class="text-center Yantram-700">${prodLS.title}.</h4>
+    <p class="font-weight-light">${prodLS.description.substr(0,80)}</p>
+    <button class="btn btn-light btn-block removeProduct">
+      <img src="./resources/img/delete.svg" width="20" alt="">
+    </button>
+    </div> 
+    `;
+
+    $cartItem.append($cart);
+  })
+
 }
