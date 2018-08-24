@@ -104,12 +104,20 @@ function getProductsFromLocalStorage(){
 function removeProduct(e) {
   e.stopPropagation();
 
+  let product, productID;
+
   if(e.target.classList.contains('removeProduct')){
     //console.log('Product Removed');
     //console.log('Removing product');
     e.target.parentElement.remove();
+    product = e.target.parentElement;
+    productID = product.getAttribute('data-id');
   }
 
+  console.log(productID);
+
+  //remove product from local storage;
+  removeProductFromLocalStorage(productID);
 }
 
 // Clears shopping cart
@@ -145,5 +153,24 @@ function getFromLocalStorage() {
 
     $cartItem.append($cart);
   })
+
+}
+
+function removeProductFromLocalStorage(pID) {
+  let productsLS = getProductsFromLocalStorage();
+
+  productsLS.forEach(function (prod, index) {
+
+    if (prod.id === pID){
+      console.error('Match');
+      productsLS.splice(index, 1);
+    }
+
+  });
+
+  console.log(productsLS);
+  //Ad the rest of the array
+  localStorage.setItem('products', JSON.stringify(productsLS));
+
 
 }
