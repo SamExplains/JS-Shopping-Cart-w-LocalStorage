@@ -2,6 +2,10 @@ console.log('Script loaded in!');
 
 /* Variables */
 const products = $('#product-list'), $cartItem = $('#cart-items'), clearCart = $('#clear-cart');
+const $cartTotalItems = $('#cart-total-items');
+let totalCartItems;
+
+
 
 loadEventListener();
 
@@ -17,7 +21,6 @@ function loadEventListener() {
 
   //Document ready for cart
   document.addEventListener('DOMContentLoaded', getFromLocalStorage);
-
 }
 
 $(document).on('click', '.container .dropdown-menu', function (e) {
@@ -26,11 +29,9 @@ $(document).on('click', '.container .dropdown-menu', function (e) {
 
 function buyProduct(e) {
   e.preventDefault();
-  // console.log(e.target);
 
   //Use delegation to find course that was added
   if(e.target.classList.contains('add-to-cart')){
-    // console.warn('Item Added');
     const aProduct = e.target.parentElement;
 
     getProductInformation(aProduct);
@@ -50,9 +51,11 @@ function getProductInformation(someProduct) {
 
   //Insert product into shopping car
   addToCart(productInfo);
-
+  // totalCartItems += 1;
   // console.log(productInfo.image);
-  console.log(productInfo);
+  //console.log(productInfo);
+
+
 
 }
 
@@ -75,6 +78,8 @@ function addToCart(productObject) {
 
   //Add to local storage
   saveIntoLocalStorage(productObject);
+  totalCartItems++;
+  $cartTotalItems.text(totalCartItems);
 
 }
 
@@ -98,6 +103,7 @@ function getProductsFromLocalStorage(){
   } else {
     products = JSON.parse(localStorage.getItem('products'));
   }
+
   return products
 }
 
@@ -114,8 +120,6 @@ function removeProduct(e) {
     productID = product.getAttribute('data-id');
   }
 
-  console.log(productID);
-
   //remove product from local storage;
   removeProductFromLocalStorage(productID);
 }
@@ -123,6 +127,9 @@ function removeProduct(e) {
 // Clears shopping cart
 function clearWholeCart() {
   $cartItem.empty();
+
+  totalCartItems = 0;
+  $cartTotalItems.text(totalCartItems);
 
   //Clear from local storage
   clearFromLocalStorage();
@@ -152,25 +159,30 @@ function getFromLocalStorage() {
     `;
 
     $cartItem.append($cart);
-  })
+  });
 
+  totalCartItems = $cartItem.children().length;
+  $cartTotalItems.text(totalCartItems);
 }
 
 function removeProductFromLocalStorage(pID) {
   let productsLS = getProductsFromLocalStorage();
+  let count = 0;
 
   productsLS.forEach(function (prod, index) {
 
-    if (prod.id === pID){
-      console.error('Match');
+    if (pID === prod.id && count < 1){
+
+      //Update Cart When 1 Item Removed
+      totalCartItems--;
+      $cartTotalItems.text(totalCartItems);
       productsLS.splice(index, 1);
+      count++;
     }
 
   });
 
-  console.log(productsLS);
   //Ad the rest of the array
   localStorage.setItem('products', JSON.stringify(productsLS));
-
 
 }

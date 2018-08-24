@@ -11,7 +11,7 @@
 
     <div class="dropdown open mt-5 d-flex flex-row-reverse">
       <button class="btn btn-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="resources/img/cart.svg" width="30" alt="">
+        <img src="resources/img/cart.svg" width="30" alt=""><span class="ml-2 mr-2 total-Items my-auto Yantram-700 animated fadeInUp" id="cart-total-items"></span>
       </button>
       <div class="dropdown-menu col-12 animated fadeIn" aria-labelledby="triggerId" style="height: 50vh !important; overflow: scroll !important;">
         <div id="cart-items">

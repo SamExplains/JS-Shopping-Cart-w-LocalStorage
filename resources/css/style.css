@@ -68,3 +68,9 @@
     width: 50% !important;
   }
 }
+
+.total-Items{
+  display: inline-block;
+  border-radius: 50px;
+  padding: .15rem .5rem .15rem .5rem;
+}
