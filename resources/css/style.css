@@ -62,3 +62,9 @@
   transition: all 1s;
   cursor: pointer;
 }
+
+@media (min-width: 700px) {
+  #cart-Img{
+    width: 50% !important;
+  }
+}
