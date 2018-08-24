@@ -54,11 +54,11 @@
 
 #itemForSale:hover{
   background-color: #EEEEEE !important;
-  -webkit-transform: scale(1.025);
-  -moz-transform: scale(1.025);
-  -ms-transform: scale(1.025);
-  -o-transform: scale(1.025);
-  transform: scale(1.025);
+  /*-webkit-transform: scale(1.025);*/
+  /*-moz-transform: scale(1.025);*/
+  /*-ms-transform: scale(1.025);*/
+  /*-o-transform: scale(1.025);*/
+  /*transform: scale(1.025);*/
   transition: all 1s;
   cursor: pointer;
 }

@@ -10,12 +10,10 @@
   </div>
 
     <div class="dropdown open mt-5 d-flex flex-row-reverse">
-      <button class="btn btn-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false">
+      <button class="btn btn-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <img src="resources/img/cart.svg" width="30" alt="">
       </button>
-      <div class="dropdown-menu col-12 animated fadeIn" aria-labelledby="triggerId">
+      <div class="dropdown-menu col-12 animated fadeIn" aria-labelledby="triggerId" style="height: 50vh !important; overflow: scroll !important;">
         <div id="cart-items">
           <!--Added Products Here-->
         </div>

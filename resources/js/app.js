@@ -1,7 +1,7 @@
 console.log('Script loaded in!');
 
 /* Variables */
-const products = $('#product-list'), $cartItem = $('#cart-items');
+const products = $('#product-list'), $cartItem = $('#cart-items'), clearCart = $('#clear-cart');
 
 loadEventListener();
 
@@ -9,7 +9,17 @@ function loadEventListener() {
 
   //New product added to cart
   products.click(buyProduct);
+
+  // Remove button clicked for item in cart
+  $cartItem.click(removeProduct);
+
+  clearCart.click(clearWholeCart);
+
 }
+
+$(document).on('click', '.container .dropdown-menu', function (e) {
+  e.stopPropagation();
+});
 
 function buyProduct(e) {
   e.preventDefault();
@@ -63,7 +73,7 @@ function addToCart(productObject) {
     <img id="cart-Img" class="img-fluid rounded mb-2" src="${productObject.image}" width="100" alt="">
     <h4 class="text-center Yantram-700">${productObject.title}.</h4>
     <p class="font-weight-light">${productObject.description.substr(0,80)}</p>
-    <button class="btn btn-light btn-block">
+    <button class="btn btn-light btn-block removeProduct">
       <img src="./resources/img/delete.svg" width="20" alt="">
     </button>
     </div> 
@@ -72,4 +82,20 @@ function addToCart(productObject) {
 
   $cartItem.append($cart);
 
+}
+
+function removeProduct(e) {
+  e.stopPropagation();
+
+  if(e.target.classList.contains('removeProduct')){
+    //console.log('Product Removed');
+    //console.log('Removing product');
+    e.target.parentElement.remove();
+  }
+
+}
+
+// Clears shopping cart
+function clearWholeCart() {
+  $cartItem.empty();
 }
