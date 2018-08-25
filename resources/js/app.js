@@ -5,6 +5,7 @@ const products = $('#product-list'), $cartItem = $('#cart-items'), clearCart = $
 const $cartTotalItems = $('#cart-total-items');
 let totalCartItems;
 
+console.log($cartTotalItems);
 
 
 loadEventListener();
@@ -174,14 +175,17 @@ function removeProductFromLocalStorage(pID) {
     if (pID === prod.id && count < 1){
 
       //Update Cart When 1 Item Removed
+      $cartTotalItems.toggleClass("animated fadeInUp");
+      console.log($cartTotalItems);
       totalCartItems--;
       $cartTotalItems.text(totalCartItems);
+      console.log($cartTotalItems);
       productsLS.splice(index, 1);
       count++;
     }
 
   });
-
+    console.log(count);
   //Ad the rest of the array
   localStorage.setItem('products', JSON.stringify(productsLS));
 

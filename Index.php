@@ -9,19 +9,19 @@
       </span>Exotic Store</h3>
   </div>
 
-    <div class="dropdown open mt-5 d-flex flex-row-reverse">
-      <button class="btn btn-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="resources/img/cart.svg" width="30" alt=""><span class="ml-2 mr-2 total-Items my-auto Yantram-700 animated fadeInUp" id="cart-total-items"></span>
-      </button>
-      <div class="dropdown-menu col-12 animated fadeIn" aria-labelledby="triggerId" style="height: 50vh !important; overflow: scroll !important;">
-        <div id="cart-items">
-          <!--Added Products Here-->
-        </div>
-        <div class="col-8 offset-2">
-          <div class="btn btn-outline-danger btn-block m-3 Yantram-700" id="clear-cart">Clear Cart</div>
-        </div>
+  <div class="fixed-top d-flex justify-content-end m-3">
+    <button class="btn btn-light dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="resources/img/cart.svg" width="30" alt=""><span class="ml-2 mr-2 total-Items my-auto Yantram-700" id="cart-total-items"></span>
+    </button>
+    <div class="dropdown-menu col-12 animated fadeIn" aria-labelledby="triggerId" style="height: 50vh !important; overflow: scroll !important;">
+      <div id="cart-items">
+        <!--Added Products Here-->
+      </div>
+      <div class="col-8 offset-2">
+        <div class="btn btn-outline-danger btn-block m-3 Yantram-700" id="clear-cart">Clear Cart</div>
       </div>
     </div>
+  </div>
 
 </div>
 
